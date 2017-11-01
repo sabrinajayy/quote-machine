@@ -4,7 +4,7 @@ $(document).ready(function () {
   getQuote();
 
   function getQuote() {
-    $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=40&callback=", function(json) {
+    $.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=40&callback=", function(json) {
       var html = "";
       var randomIndex = Math.floor(Math.random() * json.length + 1);
       var currentQuote = json[randomIndex].content.slice(3, -4);
