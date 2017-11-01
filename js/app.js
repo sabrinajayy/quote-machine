@@ -7,20 +7,29 @@ $(document).ready(function () {
     $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=40&callback=", function(json) {
       var html = "";
       var randomIndex = Math.floor(Math.random() * json.length + 1);
+      var currentQuote = json[randomIndex].content.slice(3, -4);
+      var currentAuthor = "- " + json[randomIndex].title
       html += "<div class = 'quote-text text-center'>";
       html += json[randomIndex].content;
       html += "</div>";
       html += "<div class = 'quote-author text-right'>";
-      html += "- " + json[randomIndex].title;
+      html += currentAuthor;
       html += "</div>";
-
-      // $(".quote-content").html(html);
 
       $('.quote-content').fadeTo('slow', 0.3, function() {
           $(this).html(html);
-        }).fadeTo('slow', 1);
-      });
-  }
+      }).fadeTo('slow', 1);
+
+      //encode quote and author text
+      var encodedQuote = encodeURIComponent(currentQuote);
+      var encodedAuthor = encodeURIComponent(currentAuthor);
+
+      $(".tweet-btn").fadeTo('slow', 0.3, function() {
+          $(this).html("<a href='https://twitter.com/intent/tweet?text=" + encodedQuote + encodedAuthor + "' target='_blank'><i class='fa fa-twitter-square fa-4x' aria-hidden='true'></i></a>");
+      }).fadeTo('slow', 1);
+
+      }); //ends getJSON function
+  } //end getQuote function
 
   function changeBackground() {
     var bkgrdColor = backgrounds[Math.floor(Math.random() * backgrounds.length)];
