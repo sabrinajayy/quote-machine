@@ -75,6 +75,10 @@ a:visited {
   color: #0a0a0a;
 }
 
+.quote-actions {
+  margin-top: 20px;
+}
+
 p {
   color: white;
   margin-top: 10px;
