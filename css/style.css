@@ -44,7 +44,12 @@ a:visited {
 .quote-btn {
   background-color: grey;
   color: white;
+  font-size: 18px;
   font-weight: 700;
+  height: 50px;
+  padding: 15px 15px;
+  border-radius: 2px;
+  margin-top: 20px;
 }
 
 .quote-btn:visited {
